@@ -1,4 +1,5 @@
-Quiz: Data Wrangling and Visualization
+# Quiz: Data Wrangling and Visualization
+
 A graded assignment quiz for Algoritma's Data Analytics Specialization:
 https://github.com/onlyphantom/dataanalysis
 
