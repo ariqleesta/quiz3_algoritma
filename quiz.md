@@ -23,7 +23,7 @@ Create a barchart which compares the **total** revenue (`TotalPrice`) from inter
 
 A common way to statistically inspecting a data is using box plot, a handy visualization tools that provide a five number summary for your data.
 
-Say, we want to create a boxplot that shows different distribution shape for each monthly revenue. 
+Say, we want to create a boxplot that shows different distribution shape for each monthly revenue within each country. 
 
 ```
 invoice_int['InvoiceMonth'] = invoice_int['InvoiceDate'].____
@@ -52,10 +52,10 @@ invoice_june[invoice_june['TotalPrice'] > ....]
 ```
 
 4. Say, we want to identify the outliers during that period, how would you subset it? Try to complete above code:
- - [ ] `2011-06`, `InvoiceMonth`, 17000
- - [ ] `InvoiceMonth`, `2011-06`, 24000
- - [ ] `2011-06`, `InvoiceMonth`, 13000
- - [ ] `2011-06`, `InvoiceMonth`, 7000
+    - [ ] `2011-06`, 0, 13000
+    - [ ] `2011-06`,`InvoiceMonth`, 24000
+    - [ ] `2011-06`, 1, 13000
+    - [ ] `2011-06`, `InvoiceMonth`, 24000
 
 5. Which countries are **NOT** among the outliers shown by the code above?
    - [ ] Germany
