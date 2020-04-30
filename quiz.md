@@ -1,69 +1,46 @@
-The data we're going to use is the invoice summary of a transaction data of an online retail shop provided from UCI Machine Learning [repository](https://archive.ics.uci.edu/ml/datasets/online+retail). All the transactions occurring between end of 2010 to end of 2011 for a UK-based and registered non-store online retail. We have provided the data, so you don't have to re-download it.
+# Graded Assignment
 
-Before you go any further, check the data `dtypes` and make sure all of our columns have stored in the correct data type!
+(To answer the question below, refer to the tasks listed in `3. Quiz_Data_Wrangling_and_Visualization.ipynb`)
 
-Create a barchart which compares the **total** revenue (`TotalPrice`) from international markets (all countries except UK).
+## Task 1
 
-*Hint*:
-- You may start by creating a new dataframe which stores all the invoices data from all countries except UK (`invoice.Country != 'United Kingdom'`).
-- Perform a group by aggregation to get the total(`sum`) revenue (`TotalPrice`) by each country
-- Pair the dataframe with `.plot(kind=bar)` to get the barchart!
-
-1. Take a look at the `x` axis of your plot. Does the `Country` arranged by its alphabetical order or based on its revenue (`TotalPrice` value)? Which order do you think suits our plot the most and how to achieve it?
-    - [ ] by alphabetical order: `df.sort_values('Country', ascending = False).plot(kind='bar')`
-    - [ ] by alphabetical order: `df.plot(kind='bar', ascending = False)`
-    - [ ] by revenue: `df.sort_values('TotalPrice', ascending=False).plot(kind='bar')`
-    - [ ] by revenue: `df.plot(kind='bar', ascending = False)` 
-    
-
-2. Which of the following are **not** among the top 5 largest market by revenue (has highest `Total Price`)?
+1. From the chart you just created in *Task 1*, which of the following is **not** among the top 5 largest market outside the United Kingdom?
     - [ ] Netherland
     - [ ] EIRE
     - [ ] Germany
     - [ ] Spain
 
-**Note: Save the data that exclue UK country as new `DataFrame` named `invoice_int`**
+2. When creating a bar chart, we should also consider what order in which we will plot the bars. Sorting the bars by the right order reduce the burden on the reader to make the comparisons. What ordering do you think the bars within the *Task 1* barchart should be presented?
+    - [ ] by Country: `df.sort_values('Country', ascending = False).plot(kind='bar')`
+    - [ ] by Country: `df.sort_values('Country').plot(kind='barh')`
+    - [ ] by Value: `df.sort_values('TotalPrice', ascending=False).plot(kind='bar')`
+    - [ ] by Value: `df.sort_values('TotalPrice').plot(kind='barh')` 
+    
+## Task 2
 
-A common way to statistically inspecting a data is using box plot, a handy visualization tools that provide a five number summary for your data.
+3. From the boxplot shown in *Task 2*, which of the following statements is **TRUE**?
+    - [ ] The highest market revenue in January 2011 was around 18,000 USD
+    - [ ] In 2011, the total monthly revenue in February was higher than March
+    - [ ] The median revenue appeared to be highest in May 2011.
+    - [ ] In 2011, there were more countries that happen to be outliers in April than June.
+    
+    
+4. Which one of the following is the correct code to fill in the blank codes in *Task 2*:
+   - [ ] `.dt.to_period('M')`, `['Country']`, `'TotalPrice'`, `'Country'`
+   - [ ] `.dt.to_period('M')`, `['InvoiceMonth']`, `'TotalPrice'`, `'InvoiceMonth'`
+   - [ ] `.dt.to_period('M')`, `['Country','InvoiceMonth']`, `'TotalPrice'`, `'InvoiceMonth'`
+   - [ ] `.dt.to_period('M')`, `['InvoiceMonth','Country']`, `'InvoiceMonth'`, `'TotalPrice'`
 
-Say, we want to create a boxplot that shows different distribution shape for each monthly revenue within each country by the following code: 
+## Task 3
 
-```python
-invoice_int['InvoiceMonth'] = invoice_int['InvoiceDate'].____
+5. Which countries are **NOT** included in `june_outliers` table/dataframe?
+   - [ ] Germany
+   - [ ] France
+   - [ ] Australia
+   - [ ] EIRE
 
-invoice_monthly = invoice_int.\
-groupby(____).\
-agg({'TotalPrice': 'sum'})
-
-invoice_monthly.\
-boxplot(column = ____, by=____)
-```
-
-3. Select the right answer to complete above code to create the desired boxplot:
- - [ ] `.dt.month()`, `['Country', 'InvoiceMonth']`, `TotalPrice`, `InvoiceMonth`
- - [ ] `.dt.to_period('M')`, `['Country', 'InvoiceMonth']`, `TotalPrice`, `InvoiceMonth`
- - [ ] `.dt.month()`, `InvoiceMonth`, `TotalPrice`, `InvoiceMonth`
- - [ ] `.dt.to_period('M')`, `InvoiceMonth`, `InvoiceMonth`, `TotalPrice`
-
-**You need to answer this correctly in order to answer question 4 and 5**
-
-From the previous box plot (question 3), pay attention on month June 2011. We've captured several outliers above our top whisker line. Now, try to subset the outlier by completing code below.
-
-```python
-invoice_june = invoice_monthly.xs(key = ___ ,  level= ___ )
-
-invoice_june[invoice_june['TotalPrice'] > ___ ]
-
-```
-4. Select the right answer to fill the code:
-- [ ] `2011-06`, 0, 13000
-- [ ] `2011-06`,`InvoiceMonth`, 24000
-- [ ] `2011-06`, 1, 13000
-- [ ] `2011-06`, `InvoiceMonth`, 24000
-
-
-5. Which countries are **NOT** among the outliers shown by the result above?
-- [ ] Germany
-- [ ] France
-- [ ] Australia
-- [ ] EIRE
+6. Which of the following code shows the *most efficient* **grouped bar chart** to compare **quarterly revenue growth** in `invoice_topq`?    
+    - [ ] `invoice_topq.plot(kind='bar')`
+    - [ ] `invoice_topq.unstack().plot(kind = 'bar',stacked=True)`
+    - [ ] `invoice_topq.unstack(level = 'Country').plot(kind='barh')`
+    - [ ] `invoice_topq.unstack(level = 'Country').plot(kind='bar')`
