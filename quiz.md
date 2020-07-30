@@ -7,7 +7,7 @@
     - [ ] by Country: `sort_values('Country', ascending = False).plot(kind='bar')`
     - [ ] by Country: `sort_values('Country').plot(kind='barh')`
     - [ ] by Value: `sort_values('TotalPrice', ascending=False).plot(kind='bar')`
-    - [ ] by Value: `sort_values('TotalPrice').plot(kind='barh')` 
+    - [ ] by Value: `sort_values('TotalPrice').plot()` 
 
 2. From the chart you just created in *Task 1*, which of the following is **not** among the top 5 largest market outside the United Kingdom?
     - [ ] Netherland
